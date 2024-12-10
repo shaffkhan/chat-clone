@@ -35,9 +35,11 @@ export default function CreateBotPage() {
           <CardTitle className="text-2xl font-bold">
             Create Your AI Chatbot
           </CardTitle>
+          /* eslint-enable @typescript-eslint/no-unused-vars */
           <CardDescription>
             Customize your bot's behavior and capabilities
           </CardDescription>
+          /* eslint-enable @typescript-eslint/no-unused-vars */
         </CardHeader>
         <form onSubmit={handleSubmit}>
           <CardContent className="space-y-4">

@@ -10,11 +10,13 @@ export default function ChatPage() {
     { role: "user" | "bot"; content: string }[]
   >([]);
   const [input, setInput] = useState("");
+  /* eslint-disable @typescript-eslint/no-unused-vars */
   const [chatHistory, setChatHistory] = useState<string[]>([
     "Chat 1",
     "Chat 2",
     "Chat 3",
   ]);
+/* eslint-enable @typescript-eslint/no-unused-vars */
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
