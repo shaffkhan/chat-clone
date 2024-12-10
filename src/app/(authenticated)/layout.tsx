@@ -45,7 +45,7 @@ function AuthenticatedLayout({ children }: { children: ReactNode }) {
         } lg:translate-x-0`}
       >
         <div className="p-4 h-full flex flex-col">
-          <h2 className="text-2xl font-bold mb-4">AI Chatbot</h2>
+          <h2 className="text-2xl font-bold mb-4">Jack’s AI Super Agent</h2>
           <nav className="space-y-2 flex-grow">
             <Link
               href="/dashboard"
