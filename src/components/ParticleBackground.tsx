@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useRef, useMemo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Points, PointMaterial } from "@react-three/drei";
@@ -31,7 +31,7 @@ function ParticlesInstance({ count = 5000 }: { count?: number }) {
       >
         <PointMaterial
           transparent
-          color="#8E9AAF"
+          color="#F2F2F2" // Updated color to a lighter shade
           size={0.02}
           sizeAttenuation={true}
           depthWrite={false}
