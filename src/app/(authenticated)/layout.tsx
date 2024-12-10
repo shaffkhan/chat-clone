@@ -8,7 +8,7 @@ import ParticleBackground from "@/components/ParticleBackground";
 import { withAuth } from "@/components/withAuth";
 import { Loader } from "@/components/loader";
 import { useAuth } from "@/contexts/authContext";
-
+import { IoIosMenu } from "react-icons/io";
 function AuthenticatedLayout({ children }: { children: ReactNode }) {
   const router = useRouter();
   const { logout } = useAuth();
@@ -36,7 +36,10 @@ function AuthenticatedLayout({ children }: { children: ReactNode }) {
       <button
         className="lg:hidden p-4 absolute top-4 left-4 z-20"
         onClick={toggleSidebar}
-      ></button>
+      >
+        {" "}
+        <IoIosMenu className="text-2xl" />
+      </button>
 
       {/* Sidebar */}
       <aside
@@ -45,7 +48,7 @@ function AuthenticatedLayout({ children }: { children: ReactNode }) {
         } lg:translate-x-0`}
       >
         <div className="p-4 h-full flex flex-col">
-          <h2 className="text-2xl font-bold mb-4">Jack’s AI Super Agent</h2>
+          <h2 className="text-xl font-bold mb-4">Jack’s AI Super Agent</h2>
           <nav className="space-y-2 flex-grow">
             <Link
               href="/dashboard"
