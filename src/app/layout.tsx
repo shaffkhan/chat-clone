@@ -2,12 +2,14 @@ import { Inter } from 'next/font/google';
 import { ThemeProvider } from "next-themes";
 import ParticleBackground from "@/components/ParticleBackground";
 import "./globals.css";
+import { AuthProvider } from '@/contexts/authContext';
+import { Toaster } from 'sonner';
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "AI Chatbot Creator",
-  description: "Create and chat with your own AI chatbots",
+  title: "Jack’s AI Super Agent",
+  description: "Created by xeven solutions llc",
 };
 
 export default function RootLayout({
@@ -25,7 +27,10 @@ export default function RootLayout({
           forcedTheme="dark"
         >
           <ParticleBackground />
+          <AuthProvider>
           {children}
+          <Toaster />
+        </AuthProvider>
         </ThemeProvider>
       </body>
     </html>

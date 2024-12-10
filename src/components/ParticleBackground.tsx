@@ -17,8 +17,8 @@ function ParticlesInstance({ count = 5000 }: { count?: number }) {
   }, [count]);
 
   useFrame((_, delta) => {
-    points.current.rotation.x -= delta / 10;
-    points.current.rotation.y -= delta / 15;
+    points.current.rotation.x -= delta / 80;
+    points.current.rotation.y -= delta / 80;
   });
 
   return (

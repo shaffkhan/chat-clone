@@ -14,21 +14,62 @@ import {
 } from "@/components/ui/card";
 import Link from "next/link";
 import ParticleBackground from "@/components/ParticleBackground";
+import { toast, Toaster } from "sonner";
+import { useAuth } from "@/contexts/authContext";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+  const { login } = useAuth();
+  // const { toast } = useToast(); // Removed as we are using sonner's toast
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically handle the login logic
-    console.log("Login attempt with:", email, password);
-    router.push("/dashboard");
+    setIsLoading(true);
+
+    try {
+      const response = await fetch(
+        "https://jacks-542808340038.us-central1.run.app/api/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            accept: "application/json",
+          },
+          body: JSON.stringify({ email, password }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (response.ok) {
+        // Store token and user_id in local storage
+        localStorage.setItem("authToken", data.access_token);
+        localStorage.setItem("userId", data.user_id);
+
+        // Use the login function from AuthContext
+        login(data.access_token);
+
+        toast.success("Login successful");
+        router.push("/dashboard");
+      } else {
+        toast.error(data.message || "Login failed");
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      toast.error(
+        error instanceof Error ? error.message : "An unexpected error occurred"
+      );
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
     <>
+      <Toaster />
       <ParticleBackground />
       <div className="flex items-center justify-center min-h-screen p-4">
         <Card className="w-full max-w-md">
@@ -73,8 +114,8 @@ export default function LoginPage() {
               </div>
             </CardContent>
             <CardFooter className="flex flex-col space-y-4">
-              <Button type="submit" className="w-full">
-                Sign In
+              <Button type="submit" className="w-full" disabled={isLoading}>
+                {isLoading ? "Signing In..." : "Sign In"}
               </Button>
               <p className="text-sm text-center text-gray-500">
                 Don't have an account?{" "}
