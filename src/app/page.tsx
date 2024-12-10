@@ -71,14 +71,12 @@ export default function LoginPage() {
             <Button type="submit" className="w-full">
               Sign In
             </Button>
-            /* eslint-enable @typescript-eslint/no-unused-vars */
             <p className="text-sm text-center text-gray-500">
               Don't have an account?{" "}
               <Link href="/signup" className="text-primary hover:underline">
                 Sign up
               </Link>
             </p>
-            /* eslint-enable @typescript-eslint/no-unused-vars */
           </CardFooter>
         </form>
       </Card>
