@@ -20,7 +20,7 @@ export default function AuthenticatedLayout({
   };
 
   return (
-    <div className="flex h-screen bg-gray-900 text-white">
+    <div className="flex h-screen bg-transparent text-white">
       <ParticleBackground />
       <aside className="w-64 bg-gray-800 shadow-md relative z-10">
         <div className="p-4 h-full flex flex-col">
