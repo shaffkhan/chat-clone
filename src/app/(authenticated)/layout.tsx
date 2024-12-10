@@ -8,7 +8,7 @@ import ParticleBackground from "@/components/ParticleBackground";
 import { withAuth } from "@/components/withAuth";
 import { Loader } from "@/components/loader";
 import { useAuth } from "@/contexts/authContext";
-import { IoIosMenu } from "react-icons/io";
+// import { IoIosMenu } from "react-icons/io";
 function AuthenticatedLayout({ children }: { children: ReactNode }) {
   const router = useRouter();
   const { logout } = useAuth();
@@ -33,13 +33,13 @@ function AuthenticatedLayout({ children }: { children: ReactNode }) {
       <ParticleBackground />
 
       {/* Mobile Menu Button */}
-      <button
+      {/* <button
         className="lg:hidden p-4 absolute top-4 left-4 z-20"
         onClick={toggleSidebar}
       >
         {" "}
         <IoIosMenu className="text-2xl" />
-      </button>
+      </button> */}
 
       {/* Sidebar */}
       <aside
